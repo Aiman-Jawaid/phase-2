@@ -1,55 +1,32 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Todo Full-Stack Web Application Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### Full-Stack Specification Adherence
+All implementations must strictly follow the specifications defined in the /specs/ directory. Frontend components must align with UI specs, backend APIs must conform to REST endpoint specs, and database models must match schema definitions. No implementation should deviate from the documented specs without explicit updates to the corresponding spec files.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### Authentication-First Security
+Security is paramount - every API endpoint must validate JWT tokens before processing requests. User data isolation is non-negotiable: users can only access and modify their own tasks. All authentication flows must utilize Better Auth with proper JWT handling. No endpoint should be accessible without proper authentication unless explicitly defined as public.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### Test-First Implementation (NON-NEGOTIABLE)
+TDD is mandatory: Tests must be written before implementation code. Unit tests for individual functions, integration tests for API endpoints, and end-to-end tests for critical user flows must be implemented. All tests must pass before merging. The Red-Green-Refactor cycle is strictly enforced for all feature development.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### Type-Safe Development
+All code must be strongly typed using TypeScript for frontend and proper type hints in Python for backend. API contracts must be validated using Pydantic models. No implicit any types in TypeScript, and all API responses must have proper typing. Type checking must pass before code can be merged.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### Minimalist Feature Development
+Features should be implemented with the minimal viable approach that satisfies requirements. Avoid over-engineering or adding speculative functionality. Each feature must have clear business value and be testable. Follow YAGNI (You Aren't Gonna Need It) principles and prefer simple solutions over complex abstractions.
 
-### [PRINCIPLE_6_NAME]
+### API Contract Compliance
+All backend endpoints must follow RESTful conventions and properly implement CRUD operations for tasks. Request/response schemas must match the defined API specifications. Proper HTTP status codes must be returned for all responses. Filtering, sorting, and pagination must be implemented where specified.
 
+## Security Requirements
+All data transmission must use HTTPS. JWT tokens must be properly secured and have appropriate expiration times. SQL injection prevention through parameterized queries is mandatory. Input validation must be implemented at all API boundaries. Sensitive data should never be exposed in client-side code or logs.
 
-[PRINCIPLE__DESCRIPTION]
-
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Development Workflow
+All development must follow the spec-driven approach: read relevant specs before implementing (@specs/features/task-crud.md, @specs/features/authentication.md, etc.). Use Next.js App Router patterns for frontend, FastAPI conventions for backend, and SQLModel for database interactions. All API calls must be made through the centralized API client at /lib/api.ts. Code reviews must verify compliance with all constitution principles.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+This constitution governs all development activities for the Todo Full-Stack Web Application. All team members must comply with these principles. Amendments require explicit documentation and team approval. Code reviews must verify compliance with all principles before merging. Each pull request must demonstrate adherence to these guidelines.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-01-09 | **Last Amended**: 2026-01-09
