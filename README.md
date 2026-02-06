@@ -8,30 +8,24 @@ This is a full-stack Todo application with a React/Next.js frontend and a FastAP
 The frontend is deployed on Vercel at: https://frontend-ert2jakw6-aimans-projects-3ae3674b.vercel.app
 
 ### Backend (To be deployed on Hugging Face)
-The backend can be deployed on Hugging Face Spaces using the following steps:
+The backend can be deployed on Hugging Face Spaces using either of the following methods:
 
-1. Navigate to the backend directory:
-   ```bash
-   cd backend
-   ```
+#### Method 1: Dedicated Repository (Recommended)
+1. Create a new GitHub repository containing only the backend code
+2. Copy the contents of the `backend/` directory to the root of the new repository
+3. Create the Space on Hugging Face and link the new repository
 
-2. Create a new Space on Hugging Face at https://huggingface.co/new-space
+#### Method 2: Subdirectory
+1. Create a new Space on Hugging Face at https://huggingface.co/new-space
+2. Select the "Docker" SDK and "CPU" hardware
+3. When prompted for the repository, link your GitHub repository: `https://github.com/Aiman-Jawaid/phase-2.git`
+4. In the Space settings, specify the working directory as `backend`
+5. The Space will use the Dockerfile in the backend directory
 
-3. Select the "Docker" SDK and "CPU" hardware
-
-4. Add the following files to your repository:
-   - main.py (contains the FastAPI application)
-   - requirements.txt (dependencies)
-   - Dockerfile (deployment configuration)
-   - app.py (entry point)
-   - run_app.py (startup script)
-   - README.md (with Hugging Face metadata)
-
-5. In the Space settings, add the following secrets:
-   - BETTER_AUTH_SECRET: Your JWT secret
-   - DATABASE_URL: Your PostgreSQL connection string
-
-6. The API will be available at your Space URL.
+#### Required Environment Variables
+In the Space settings, add the following secrets:
+- `BETTER_AUTH_SECRET`: Your JWT secret
+- `DATABASE_URL`: Your PostgreSQL connection string
 
 ## Architecture
 
