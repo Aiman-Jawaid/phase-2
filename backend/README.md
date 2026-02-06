@@ -1,3 +1,12 @@
+---
+title: Todo API Backend
+emoji: 🚀
+colorFrom: blue
+colorTo: yellow
+sdk: docker
+app_file: run_app.py
+---
+
 # Todo API Backend
 
 Secure Todo Management Backend with JWT Authentication built using FastAPI and SQLModel.
@@ -18,35 +27,11 @@ Secure Todo Management Backend with JWT Authentication built using FastAPI and S
 - **Authentication**: JWT tokens with python-jose
 - **ORM**: SQLModel (combines Pydantic and SQLAlchemy)
 
-## Installation
-
-1. Clone the repository
-2. Create a virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Configure environment variables by copying `.env.example` to `.env` and setting the appropriate values
-
-## Environment Variables
-
-- `BETTER_AUTH_SECRET`: Secret key for verifying JWT tokens from Better Auth
-- `DATABASE_URL`: PostgreSQL connection string for Neon database
-- `ENVIRONMENT`: Set to "development", "staging", or "production"
-
 ## Running the Application
 
-```bash
-uvicorn main:app --reload
-```
+The API is deployed on Hugging Face Spaces and will be available at the space URL.
 
-The API will be available at `http://localhost:8000`.
-
-API documentation is available at `http://localhost:8000/docs`.
+API documentation is available at `/docs`.
 
 ## API Endpoints
 
@@ -73,12 +58,3 @@ Authorization: Bearer <JWT_TOKEN>
 - Users can only access their own tasks
 - Input validation is performed on all endpoints
 - Proper error handling without sensitive information disclosure
-
-## Development
-
-To run tests:
-```bash
-pytest tests/
-```
-
-For database migrations (in production), consider using Alembic after initial development.

@@ -86,7 +86,7 @@ const DashboardPage: React.FC = () => {
       const response = await apiClient.post('/api/tasks', taskData);
 
       if (response.success && response.data) {
-        setTasks(prevTasks => [...prevTasks, response.data]);
+        setTasks(prevTasks => [...prevTasks, response.data as Task]);
       }
     } catch (error) {
       console.error('Failed to add task:', error);

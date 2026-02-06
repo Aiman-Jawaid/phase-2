@@ -25,7 +25,7 @@ const LoginPage: React.FC = () => {
       if (response.success && response.data) {
         // Store the token in localStorage
         if (typeof window !== 'undefined') {
-          localStorage.setItem('token', response.data.access_token);
+          localStorage.setItem('token', (response.data as { access_token: string }).access_token);
         }
 
         // Redirect to dashboard

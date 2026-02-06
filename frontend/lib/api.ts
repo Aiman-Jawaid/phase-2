@@ -8,6 +8,17 @@ interface ApiResponse<T> {
   success: boolean;
 }
 
+// Define specific response types
+interface AuthResponse {
+  access_token: string;
+  token_type?: string;
+  user?: {
+    id: string;
+    email: string;
+    name?: string;
+  };
+}
+
 class ApiClient {
   private baseUrl: string;
 
